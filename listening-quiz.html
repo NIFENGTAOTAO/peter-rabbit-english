@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐰 彼得住 S1E2 听音选图</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Comic Sans MS', cursive, sans-serif; background: linear-gradient(135deg, #E8F5E9, #FFF8E1); min-height: 100vh; padding: 20px; }
+  .container { max-width: 600px; margin: 0 auto; }
+  h1 { text-align: center; color: #2E7D32; font-size: 1.8em; margin-bottom: 20px; }
+  .card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
+  .progress { font-size: 0.9em; color: #666; margin-bottom: 15px; text-align: center; }
+  .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #FFD54F, #FFA000); border-radius: 4px; transition: width 0.3s; }
+  .sentence { font-size: 1.4em; color: #333; text-align: center; padding: 20px; background: #FFFDE7; border-radius: 12px; margin-bottom: 20px; min-height: 80px; display: flex; align-items: center; justify-content: center; }
+  .play-btn { display: block; margin: 0 auto 20px; background: #FFA000; color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 1.1em; cursor: pointer; }
+  .play-btn:active { transform: scale(0.97); }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .option { padding: 15px; border: 2px solid #FFD54F; border-radius: 12px; background: white; font-size: 1.1em; cursor: pointer; text-align: center; transition: all 0.2s; color: #333; }
+  .option:hover { background: #FFFDE7; }
+  .option.correct { background: #FFF9C4; border-color: #FFA000; color: #E65100; }
+  .option.wrong { background: #FFCDD2; border-color: #F44336; color: #C62828; }
+  .option.disabled { pointer-events: none; }
+  .result { text-align: center; font-size: 1.2em; margin-top: 20px; padding: 15px; border-radius: 12px; }
+  .result.pass { background: #FFF9C4; color: #E65100; }
+  .result.fail { background: #FFCDD2; color: #C62828; }
+  .back-home { display: block; text-align: center; margin-top: 20px; color: #4CAF50; text-decoration: none; font-size: 1.1em; }
+  .episode-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+  .ep-btn { padding: 8px 20px; border: 2px solid #81C784; border-radius: 20px; background: white; color: #2E7D32; text-decoration: none; font-size: 0.9em; }
+  .ep-btn.active { background: #FFA000; color: white; border-color: #FFA000; }
+  .ep-btn:hover { background: #FFFDE7; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🐰 彼得住 S1E2 听音选图</h1>
+  <div class="episode-nav">
+    <a href="listening-quiz-s1e1.html" class="ep-btn">S1E1</a>
+    <a href="listening-quiz.html" class="ep-btn active">S1E2</a>
+  </div>
+  <div class="card">
+    <div class="progress" id="progressText">第 1 / 29 题</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:3.4%"></div></div>
+    <div class="sentence" id="sentence">点击播放按钮听句子</div>
+    <button class="play-btn" id="playBtn" onclick="playSentence()">🔊 播放句子</button>
+    <div class="options" id="options"></div>
+    <div class="result" id="result" style="display:none"></div>
+  </div>
+  <a href="index.html" class="back-home">🏠 返回首页</a>
+</div>
+
+<script>
+const quizData = [
+  { sentence: "Peter hopped through the woods.", options: ["woods", "garden", "gate", "net"], answer: 0 },
+  { sentence: "A path led to the farmer's gate.", options: ["garden", "gate", "house", "net"], answer: 1 },
+  { sentence: "Peter squeezed under the gate and looked around.", options: ["gate", "window", "door", "net"], answer: 0 },
+  { sentence: "\"I see green leaves everywhere!\" said Peter.", options: ["flowers", "leaves", "grass", "trees"], answer: 1 },
+  { sentence: "Peter wandered through the garden.", options: ["garden", "woods", "kitchen", "farm"], answer: 0 },
+  { sentence: "He ate some lettuce.", options: ["lettuce", "carrots", "beans", "radishes"], answer: 0 },
+  { sentence: "He ate some green beans.", options: ["beans", "lettuce", "potatoes", "cabbages"], answer: 0 },
+  { sentence: "He ate some radishes.", options: ["radishes", "carrots", "beans", "lettuce"], answer: 0 },
+  { sentence: "\"These vegetables are delicious!\" said Peter.", options: ["delicious", "terrible", "awful", "boring"], answer: 0 },
+  { sentence: "\"I'll eat some more.\"", options: ["more", "less", "nothing", "everything"], answer: 0 },
+  { sentence: "Suddenly he ran into a net.", options: ["net", "gate", "wall", "tree"], answer: 0 },
+  { sentence: "\"I'm stuck in the farmer's net!\" cried Peter.", options: ["net", "gate", "hole", "box"], answer: 0 },
+  { sentence: "\"Where's the gate?\" cried Peter.", options: ["gate", "door", "window", "exit"], answer: 0 },
+  { sentence: "\"Stop, thief!\" cried the farmer.", options: ["thief", "rabbit", "mouse", "bird"], answer: 0 },
+  { sentence: "Peter ran as fast as he could.", options: ["fast", "slow", "quiet", "loud"], answer: 0 },
+  { sentence: "He swung his rake at Peter.", options: ["rake", "stick", "broom", "hoe"], answer: 0 },
+  { sentence: "The farmer grabbed his rake.", options: ["rake", "hammer", "saw", "shovel"], answer: 0 },
+  { sentence: "The farmer gasped. \"A rabbit!\"", options: ["rabbit", "mouse", "bird", "cat"], answer: 0 },
+  { sentence: "The big buttons on his jacket got caught.", options: ["buttons", "pockets", "sleeves", "collar"], answer: 0 },
+  { sentence: "He lost one shoe near the cabbages.", options: ["cabbages", "potatoes", "lettuce", "beans"], answer: 0 },
+  { sentence: "He lost his other shoe near the potatoes.", options: ["potatoes", "cabbages", "radishes", "carrots"], answer: 0 },
+  { sentence: "His heart beat fast.", options: ["fast", "slow", "quiet", "soft"], answer: 0 },
+  { sentence: "He kicked and twisted.", options: ["kicked", "walked", "ran", "jumped"], answer: 0 },
+  { sentence: "He looked around.", options: ["around", "away", "up", "down"], answer: 0 },
+  { sentence: "He chased Peter.", options: ["chased", "helped", "fed", "called"], answer: 0 },
+  { sentence: "But it was no help.", options: ["help", "use", "good", "bad"], answer: 0 },
+  { sentence: "Then he hopped around a corner.", options: ["corner", "tree", "gate", "wall"], answer: 0 },
+  { sentence: "Peter gasped. \"The farmer!\"", options: ["farmer", "mother", "father", "brother"], answer: 0 },
+  { sentence: "\"Ahh!\" cried Peter.", options: ["Ahh", "Ohh", "Eww", "Yay"], answer: 0 },
+];
+
+function seededShuffle(arr, seed) {
+  const result = [...arr];
+  let m = result.length;
+  while (m) {
+    const s = (seed * 9301 + 49297) % 233280;
+    const t = Math.floor((s / 233280) * m--);
+    [result[m], result[t]] = [result[t], result[m]];
+    seed = (seed * 9301 + 49297) % 233280;
+  }
+  return result;
+}
+
+const shuffledQuiz = seededShuffle(quizData, 20260711);
+let currentIndex = 0;
+let correctCount = 0;
+let utter = null;
+
+function speak(text) {
+  if (utter) window.speechSynthesis.cancel();
+  utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = 0.85;
+  window.speechSynthesis.speak(utter);
+}
+
+function playSentence() {
+  const q = shuffledQuiz[currentIndex];
+  speak(q.sentence);
+}
+
+function renderQuestion() {
+  const q = shuffledQuiz[currentIndex];
+  document.getElementById('sentence').textContent = q.sentence;
+  document.getElementById('progressText').textContent = `第 ${currentIndex + 1} / ${shuffledQuiz.length} 题`;
+  document.getElementById('progressFill').style.width = `${((currentIndex + 1) / shuffledQuiz.length) * 100}%`;
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('options').innerHTML = '';
+  document.getElementById('options').style.pointerEvents = 'auto';
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(i);
+    document.getElementById('options').appendChild(btn);
+  });
+
+  setTimeout(playSentence, 300);
+}
+
+function checkAnswer(selected) {
+  const q = shuffledQuiz[currentIndex];
+  const buttons = document.querySelectorAll('.option');
+  buttons.forEach(b => b.classList.add('disabled'));
+  document.getElementById('options').style.pointerEvents = 'none';
+
+  if (selected === q.answer) {
+    buttons[selected].classList.add('correct');
+    correctCount++;
+    speak('Correct! ' + q.sentence);
+  } else {
+    buttons[selected].classList.add('wrong');
+    buttons[q.answer].classList.add('correct');
+    speak('Wrong. ' + q.sentence);
+  }
+
+  setTimeout(() => {
+    currentIndex++;
+    if (currentIndex < shuffledQuiz.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 2000);
+}
+
+function showResult() {
+  const pct = Math.round((correctCount / shuffledQuiz.length) * 100);
+  document.getElementById('progressText').textContent = '完成！';
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('sentence').textContent = `正确率 ${pct}%`;
+  document.getElementById('playBtn').style.display = 'none';
+  document.getElementById('options').innerHTML = '';
+  const resultDiv = document.getElementById('result');
+  resultDiv.style.display = 'block';
+  if (pct >= 80) {
+    resultDiv.className = 'result pass';
+    resultDiv.textContent = `🎉 太棒了！${correctCount}/${shuffledQuiz.length} 题正确！`;
+  } else if (pct >= 60) {
+    resultDiv.className = 'result pass';
+    resultDiv.textContent = `👍 不错！${correctCount}/${shuffledQuiz.length} 题正确！`;
+  } else {
+    resultDiv.className = 'result fail';
+    resultDiv.textContent = `💪 继续加油！${correctCount}/${shuffledQuiz.length} 题正确，再听几遍吧！`;
+  }
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

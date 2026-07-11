@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 彼得住 句子跟读</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Comic Sans MS', cursive, sans-serif; background: linear-gradient(135deg, #E3F2FD, #FFF8E1); min-height: 100vh; padding: 20px; }
+  .container { max-width: 600px; margin: 0 auto; }
+  h1 { text-align: center; color: #1565C0; font-size: 1.5em; margin-bottom: 15px; }
+  .ep-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+  .ep-tab { padding: 6px 18px; border: 2px solid #64B5F6; border-radius: 15px; background: white; color: #1565C0; text-decoration: none; font-size: 0.85em; cursor: pointer; }
+  .ep-tab.active { background: #1565C0; color: white; }
+  .sentence-card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .sentence-num { font-size: 0.75em; color: #aaa; margin-bottom: 5px; }
+  .sentence-text { font-size: 1.05em; color: #333; line-height: 1.5; margin-bottom: 8px; }
+  .sentence-actions { display: flex; gap: 8px; }
+  .action-btn { flex: 1; padding: 7px; border: none; border-radius: 8px; font-size: 0.85em; cursor: pointer; }
+  .listen-btn { background: #E3F2FD; color: #1565C0; }
+  .record-btn { background: #FFF3E0; color: #E65100; }
+  .action-btn:active { transform: scale(0.97); }
+  .mastered { border-left: 4px solid #4CAF50; }
+  .mastered .sentence-text::after { content: ' ✅'; color: #4CAF50; }
+  .back { display: block; text-align: center; margin-top: 18px; color: #1565C0; text-decoration: none; font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📝 彼得住 句子跟读</h1>
+  <div class="ep-tabs">
+    <span class="ep-tab active" id="tab-all" onclick="showAll()">全部</span>
+    <span class="ep-tab" id="tab-s1e1" onclick="showS1E1()">S1E1</span>
+    <span class="ep-tab" id="tab-s1e2" onclick="showS1E2()">S1E2</span>
+  </div>
+  <div id="sentences"></div>
+  <a href="index.html" class="back">🏠 返回首页</a>
+</div>
+
+<script>
+const sentencesAll = [
+  // S1E1
+  { ep: "s1e1", s: "Mrs. Rabbit had four little bunnies." },
+  { ep: "s1e1", s: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", s: "They lived in a hole under a tree." },
+  { ep: "s1e1", s: "One day Mrs. Rabbit said, \"We need bread.\"" },
+  { ep: "s1e1", s: "\"Can we go outside?\" asked Peter." },
+  { ep: "s1e1", s: "\"I will be back soon,\" she said." },
+  { ep: "s1e1", s: "Mrs. Rabbit headed off to town." },
+  { ep: "s1e1", s: "\"But don't go into the farmer's garden.\"" },
+  { ep: "s1e1", s: "Your father went there. And he never came home." },
+  { ep: "s1e1", s: "The four bunnies hopped down the path." },
+  { ep: "s1e1", s: "\"I see a blackberry bush!\" said Mopsy." },
+  { ep: "s1e1", s: "Peter's sisters started to pick blackberries." },
+  { ep: "s1e1", s: "\"Yum!\" said Flopsy and Cotton-tail." },
+  { ep: "s1e1", s: "\"I don't want blackberries,\" Peter thought." },
+  { ep: "s1e1", s: "\"I'm going to the farmer's garden!\"" },
+  { ep: "s1e1", s: "\"Look over there!\" said Mopsy." },
+  { ep: "s1e1", s: "She grabbed her basket and an umbrella." },
+  { ep: "s1e1", s: "\"Yes,\" said his mother." },
+  { ep: "s1e1", s: "Mrs. Rabbit looked at her bunnies." },
+  { ep: "s1e1", s: "Flopsy, Mopsy, and Cotton-tail ran to the bush." },
+  { ep: "s1e1", s: "Then they went outside." },
+  { ep: "s1e1", s: "\"Okay, Mother,\" said the bunnies." },
+  { ep: "s1e1", s: "The bunnies put on their jackets and shoes." },
+  { ep: "s1e1", s: "I'll go into town to buy some." },
+  // S1E2
+  { ep: "s1e2", s: "Peter hopped through the woods." },
+  { ep: "s1e2", s: "A path led to the farmer's gate." },
+  { ep: "s1e2", s: "Peter squeezed under the gate and looked around." },
+  { ep: "s1e2", s: "\"I see green leaves everywhere!\" said Peter." },
+  { ep: "s1e2", s: "Peter wandered through the garden." },
+  { ep: "s1e2", s: "He ate some lettuce." },
+  { ep: "s1e2", s: "He ate some green beans." },
+  { ep: "s1e2", s: "He ate some radishes." },
+  { ep: "s1e2", s: "\"These vegetables are delicious!\" said Peter." },
+  { ep: "s1e2", s: "\"I'll eat some more.\"" },
+  { ep: "s1e2", s: "Suddenly he ran into a net." },
+  { ep: "s1e2", s: "\"I'm stuck in the farmer's net!\" cried Peter." },
+  { ep: "s1e2", s: "\"Where's the gate?\" cried Peter." },
+  { ep: "s1e2", s: "\"Stop, thief!\" cried the farmer." },
+  { ep: "s1e2", s: "Peter ran as fast as he could." },
+  { ep: "s1e2", s: "He swung his rake at Peter." },
+  { ep: "s1e2", s: "The farmer grabbed his rake." },
+  { ep: "s1e2", s: "The farmer gasped. \"A rabbit!\"" },
+  { ep: "s1e2", s: "The big buttons on his jacket got caught." },
+  { ep: "s1e2", s: "He lost one shoe near the cabbages." },
+  { ep: "s1e2", s: "He lost his other shoe near the potatoes." },
+  { ep: "s1e2", s: "His heart beat fast." },
+  { ep: "s1e2", s: "He kicked and twisted." },
+  { ep: "s1e2", s: "He looked around." },
+  { ep: "s1e2", s: "He chased Peter." },
+  { ep: "s1e2", s: "But it was no help." },
+  { ep: "s1e2", s: "Then he hopped around a corner." },
+  { ep: "s1e2", s: "Peter gasped. \"The farmer!\"" },
+  { ep: "s1e2", s: "\"Ahh!\" cried Peter." },
+];
+
+let utter = null;
+function speak(text) {
+  if (utter) window.speechSynthesis.cancel();
+  utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = 0.8;
+  window.speechSynthesis.speak(utter);
+}
+
+function renderSentences(filter) {
+  const container = document.getElementById('sentences');
+  container.innerHTML = '';
+  const filtered = filter === 'all' ? sentencesAll : sentencesAll.filter(s => s.ep === filter);
+  filtered.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'sentence-card';
+    card.id = 'sentence-' + i;
+    card.innerHTML = `
+      <div class="sentence-num">${item.ep === 's1e1' ? 'S1E1' : 'S1E2'} 第 ${i+1} 句</div>
+      <div class="sentence-text">${item.s.replace(/"/g, '&quot;')}</div>
+      <div class="sentence-actions">
+        <button class="action-btn listen-btn" onclick="speak('${item.s.replace(/'/g, "\\'").replace(/"/g, '\\"')}')">🔊 听</button>
+        <button class="action-btn record-btn" onclick="markMastered('sentence-${i}')">✓ 我会了</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function markMastered(id) {
+  document.getElementById(id).classList.add('mastered');
+}
+
+function showAll() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-all').classList.add('active');
+  renderSentences('all');
+}
+function showS1E1() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-s1e1').classList.add('active');
+  renderSentences('s1e1');
+}
+function showS1E2() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-s1e2').classList.add('active');
+  renderSentences('s1e2');
+}
+
+renderSentences('all');
+</script>
+</body>
+</html>

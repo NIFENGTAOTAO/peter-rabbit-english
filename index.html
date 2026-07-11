@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐰 彼得住英语启蒙</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Comic Sans MS', cursive, sans-serif; background: linear-gradient(135deg, #FFF8E1, #E8F5E9); min-height: 100vh; padding: 20px; }
+  .container { max-width: 500px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 20px; }
+  .header h1 { color: #33691E; font-size: 1.8em; margin-bottom: 5px; }
+  .header p { color: #689F38; font-size: 0.95em; }
+
+  .episodes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .ep-card { background: white; border-radius: 16px; padding: 18px 12px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.08); text-decoration: none; color: inherit; display: block; transition: transform 0.15s; }
+  .ep-card:active { transform: scale(0.97); }
+  .ep-num { font-size: 0.75em; color: #aaa; margin-bottom: 4px; }
+  .ep-title { font-size: 0.95em; color: #333; font-weight: bold; margin-bottom: 4px; }
+  .ep-sub { font-size: 0.7em; color: #999; }
+  .ep-card.s1e1 { border: 2px solid #A5D6A7; }
+  .ep-card.s1e2 { border: 2px solid #FFD54F; }
+
+  .progress-card { background: white; border-radius: 20px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 20px; text-align: center; }
+  .progress-info { display: flex; justify-content: space-around; margin-top: 12px; }
+  .progress-item { text-align: center; }
+  .progress-num { font-size: 1.6em; color: #4CAF50; font-weight: bold; }
+  .progress-label { font-size: 0.75em; color: #888; }
+
+  .audio-card { background: linear-gradient(135deg, #A5D6A7, #81C784); border-radius: 16px; padding: 18px; margin-bottom: 20px; text-align: center; }
+  .audio-title { color: white; font-size: 1em; margin-bottom: 10px; }
+  .audio-btns { display: flex; gap: 10px; justify-content: center; }
+  .audio-btn { background: white; color: #2E7D32; border: none; padding: 10px 20px; border-radius: 20px; font-size: 0.85em; cursor: pointer; font-weight: bold; }
+  .audio-btn:active { transform: scale(0.97); }
+  .audio-label { color: rgba(255,255,255,0.8); font-size: 0.75em; margin-top: 6px; }
+
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .menu-card { background: white; border-radius: 16px; padding: 20px 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.15s; text-decoration: none; color: inherit; display: block; }
+  .menu-card:active { transform: scale(0.97); }
+  .menu-icon { font-size: 2.2em; margin-bottom: 6px; }
+  .menu-title { font-size: 1em; color: #333; margin-bottom: 3px; }
+  .menu-desc { font-size: 0.7em; color: #999; }
+  .menu-card.green { border: 2px solid #81C784; }
+  .menu-card.yellow { border: 2px solid #FFD54F; }
+  .menu-card.blue { border: 2px solid #64B5F6; }
+  .menu-card.purple { border: 2px solid #BA68C8; }
+
+  .tips { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .tips h3 { color: #F9A825; font-size: 0.95em; margin-bottom: 8px; }
+  .tips ul { list-style: none; padding: 0; }
+  .tips li { color: #666; font-size: 0.8em; padding: 4px 0; border-bottom: 1px dashed #eee; }
+  .tips li:last-child { border: none; }
+  .tips li::before { content: '💡 '; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🐰 彼得住英语启蒙</h1>
+    <p>Peter Rabbit · 2 Episodes</p>
+  </div>
+
+  <div class="episodes">
+    <a href="listening-quiz.html" class="ep-card s1e1">
+      <div class="ep-num">S1E1</div>
+      <div class="ep-title">🐰 兔妈妈去镇上</div>
+      <div class="ep-sub">25句 · 94词汇</div>
+    </a>
+    <a href="listening-quiz-s1e2.html" class="ep-card s1e2">
+      <div class="ep-num">S1E2</div>
+      <div class="ep-title">🌿 走进花园</div>
+      <div class="ep-sub">29句 · 85词汇</div>
+    </a>
+  </div>
+
+  <div class="progress-card">
+    <div style="color:#888;font-size:0.85em">学习进度</div>
+    <div class="progress-info">
+      <div class="progress-item">
+        <div class="progress-num" id="learnedCount">0</div>
+        <div class="progress-label">已学句子</div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-num" id="accuracy">--</div>
+        <div class="progress-label">正确率</div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-num">54</div>
+        <div class="progress-label">总句子</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="audio-card">
+    <div class="audio-title">🎧 听原版音频</div>
+    <div class="audio-btns">
+      <button class="audio-btn" onclick="playAudio('001')">▶ S1E1</button>
+      <button class="audio-btn" onclick="playAudio('002')">▶ S1E2</button>
+    </div>
+    <div class="audio-label" id="audioStatus">选择一集播放</div>
+  </div>
+
+  <div class="menu-grid">
+    <a href="vocabulary.html" class="menu-card green">
+      <div class="menu-icon">📖</div>
+      <div class="menu-title">词汇卡片</div>
+      <div class="menu-desc">两集核心词汇</div>
+    </a>
+    <a href="listening-quiz.html" class="menu-card yellow">
+      <div class="menu-icon">👂</div>
+      <div class="menu-title">听音选图</div>
+      <div class="menu-desc">54道听力练习</div>
+    </a>
+    <a href="sentences.html" class="menu-card blue">
+      <div class="menu-icon">📝</div>
+      <div class="menu-title">句子跟读</div>
+      <div class="menu-desc">跟读两集句子</div>
+    </a>
+    <a href="more.html" class="menu-card purple">
+      <div class="menu-icon">🎬</div>
+      <div class="menu-title">更多内容</div>
+      <div class="menu-desc">持续更新中...</div>
+    </a>
+  </div>
+
+  <div class="tips">
+    <h3>📌 学习建议</h3>
+    <ul>
+      <li>先听原版音频3遍，熟悉语感</li>
+      <li>再看词汇卡片，学单词发音</li>
+      <li>做听音选图，检测听力理解</li>
+      <li>每天学习10分钟，保护眼睛</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+let audio = null;
+let currentEp = null;
+
+function playAudio(ep) {
+  if (audio) {
+    audio.pause();
+    audio = null;
+  }
+  audio = new Audio(`audio/${ep}.mp3`);
+  audio.onended = () => {
+    document.getElementById('audioStatus').textContent = 'S1E' + (ep === '001' ? '1' : '2') + ' 播放完成';
+  };
+  audio.onerror = () => {
+    document.getElementById('audioStatus').textContent = '音频加载失败，请检查文件';
+  };
+  audio.play();
+  currentEp = ep;
+  document.getElementById('audioStatus').textContent = '正在播放 S1E' + (ep === '001' ? '1' : '2') + '...';
+}
+
+const progress = JSON.parse(localStorage.getItem('peter-rabbit-progress') || '{"learned":0,"correct":0,"total":0}');
+if (progress.total > 0) {
+  document.getElementById('learnedCount').textContent = progress.learned;
+  document.getElementById('accuracy').textContent = Math.round((progress.correct / progress.total) * 100) + '%';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,884 @@
+﻿1
+00:00:10,067 --> 00:00:11,393
+Peter hopped through the woods.
+
+2
+00:00:11,394 --> 00:00:11,714
+<font color="#ffff00">Peter</font> hopped through the woods.
+
+3
+00:00:11,715 --> 00:00:12,301
+Peter <font color="#ffff00">hopped</font> through the woods.
+
+4
+00:00:12,302 --> 00:00:12,571
+Peter hopped <font color="#ffff00">through</font> the woods.
+
+5
+00:00:12,572 --> 00:00:12,759
+Peter hopped through <font color="#ffff00">the</font> woods.
+
+6
+00:00:12,760 --> 00:00:13,376
+Peter hopped through the <font color="#ffff00">woods</font>.
+
+7
+00:00:13,377 --> 00:00:17,135
+Peter hopped through the woods.
+
+8
+00:00:17,136 --> 00:00:17,656
+A path led to the farmer's gate.
+
+9
+00:00:17,657 --> 00:00:17,841
+<font color="#ffff00">A</font> path led to the farmer's gate.
+
+10
+00:00:17,842 --> 00:00:18,316
+A <font color="#ffff00">path</font> led to the farmer's gate.
+
+11
+00:00:18,317 --> 00:00:18,685
+A path <font color="#ffff00">led</font> to the farmer's gate.
+
+12
+00:00:18,686 --> 00:00:18,840
+A path led <font color="#ffff00">to</font> the farmer's gate.
+
+13
+00:00:18,841 --> 00:00:19,002
+A path led to <font color="#ffff00">the</font> farmer's gate.
+
+14
+00:00:19,003 --> 00:00:19,468
+A path led to the <font color="#ffff00">farmer's</font> gate.
+
+15
+00:00:19,469 --> 00:00:20,105
+A path led to the farmer's <font color="#ffff00">gate</font>.
+
+16
+00:00:20,106 --> 00:00:28,472
+A path led to the farmer's gate.
+
+17
+00:00:28,473 --> 00:00:28,853
+Peter squeezed under the gate and looked around.
+
+18
+00:00:28,854 --> 00:00:29,180
+<font color="#ffff00">Peter</font> squeezed under the gate and looked around.
+
+19
+00:00:29,181 --> 00:00:30,059
+Peter <font color="#ffff00">squeezed</font> under the gate and looked around.
+
+20
+00:00:30,060 --> 00:00:30,345
+Peter squeezed <font color="#ffff00">under</font> the gate and looked around.
+
+21
+00:00:30,346 --> 00:00:30,518
+Peter squeezed under <font color="#ffff00">the</font> gate and looked around.
+
+22
+00:00:30,519 --> 00:00:30,992
+Peter squeezed under the <font color="#ffff00">gate</font> and looked around.
+
+23
+00:00:30,993 --> 00:00:31,221
+Peter squeezed under the gate <font color="#ffff00">and</font> looked around.
+
+24
+00:00:31,222 --> 00:00:31,529
+Peter squeezed under the gate and <font color="#ffff00">looked</font> around.
+
+25
+00:00:31,530 --> 00:00:32,365
+Peter squeezed under the gate and looked <font color="#ffff00">around</font>.
+
+26
+00:00:32,366 --> 00:00:36,672
+Peter squeezed under the gate and looked around.
+
+27
+00:00:36,673 --> 00:00:37,253
+"I see green leaves everywhere!" said Peter.
+
+28
+00:00:37,254 --> 00:00:37,472
+"<font color="#ffff00">I</font> see green leaves everywhere!" said Peter.
+
+29
+00:00:37,473 --> 00:00:37,878
+"I <font color="#ffff00">see</font> green leaves everywhere!" said Peter.
+
+30
+00:00:37,879 --> 00:00:38,487
+"I see <font color="#ffff00">green</font> leaves everywhere!" said Peter.
+
+31
+00:00:38,488 --> 00:00:39,165
+"I see green <font color="#ffff00">leaves</font> everywhere!" said Peter.
+
+32
+00:00:39,166 --> 00:00:40,951
+"I see green leaves <font color="#ffff00">everywhere</font>!" said Peter.
+
+33
+00:00:40,952 --> 00:00:41,374
+"I see green leaves everywhere!" <font color="#ffff00">said</font> Peter.
+
+34
+00:00:41,375 --> 00:00:41,975
+"I see green leaves everywhere!" said <font color="#ffff00">Peter</font>.
+
+35
+00:00:41,976 --> 00:00:51,177
+"I see green leaves everywhere!" said Peter.
+
+36
+00:00:51,178 --> 00:00:51,634
+Peter wandered through the garden.
+
+37
+00:00:51,635 --> 00:00:51,971
+<font color="#ffff00">Peter</font> wandered through the garden.
+
+38
+00:00:51,972 --> 00:00:52,666
+Peter <font color="#ffff00">wandered</font> through the garden.
+
+39
+00:00:52,667 --> 00:00:52,869
+Peter wandered <font color="#ffff00">through</font> the garden.
+
+40
+00:00:52,870 --> 00:00:53,041
+Peter wandered through <font color="#ffff00">the</font> garden.
+
+41
+00:00:53,042 --> 00:00:53,648
+Peter wandered through the <font color="#ffff00">garden</font>.
+
+42
+00:00:53,649 --> 00:00:59,535
+Peter wandered through the garden.
+
+43
+00:00:59,536 --> 00:00:59,812
+He ate some lettuce.
+
+44
+00:00:59,813 --> 00:01:00,030
+<font color="#ffff00">He</font> ate some lettuce.
+
+45
+00:01:00,031 --> 00:01:00,265
+He <font color="#ffff00">ate</font> some lettuce.
+
+46
+00:01:00,266 --> 00:01:00,528
+He ate <font color="#ffff00">some</font> lettuce.
+
+47
+00:01:00,529 --> 00:01:01,196
+He ate some <font color="#ffff00">lettuce</font>.
+
+48
+00:01:01,197 --> 00:01:02,133
+He ate some lettuce.
+
+49
+00:01:02,134 --> 00:01:02,819
+He ate some green beans.
+
+50
+00:01:02,820 --> 00:01:03,054
+<font color="#ffff00">He</font> ate some green beans.
+
+51
+00:01:03,055 --> 00:01:03,321
+He <font color="#ffff00">ate</font> some green beans.
+
+52
+00:01:03,322 --> 00:01:03,695
+He ate <font color="#ffff00">some</font> green beans.
+
+53
+00:01:03,696 --> 00:01:04,051
+He ate some <font color="#ffff00">green</font> beans.
+
+54
+00:01:04,052 --> 00:01:04,838
+He ate some green <font color="#ffff00">beans</font>.
+
+55
+00:01:04,839 --> 00:01:13,209
+He ate some green beans.
+
+56
+00:01:13,210 --> 00:01:13,790
+He ate some radishes.
+
+57
+00:01:13,791 --> 00:01:14,003
+<font color="#ffff00">He</font> ate some radishes.
+
+58
+00:01:14,004 --> 00:01:14,399
+He <font color="#ffff00">ate</font> some radishes.
+
+59
+00:01:14,400 --> 00:01:14,770
+He ate <font color="#ffff00">some</font> radishes.
+
+60
+00:01:14,771 --> 00:01:15,829
+He ate some <font color="#ffff00">radishes</font>.
+
+61
+00:01:15,830 --> 00:01:20,632
+He ate some radishes.
+
+62
+00:01:20,633 --> 00:01:21,269
+"These vegetables are delicious!" said Peter.
+
+63
+00:01:21,270 --> 00:01:21,759
+"<font color="#ffff00">These</font> vegetables are delicious!" said Peter.
+
+64
+00:01:21,760 --> 00:01:22,410
+"These <font color="#ffff00">vegetables</font> are delicious!" said Peter.
+
+65
+00:01:22,411 --> 00:01:22,626
+"These vegetables <font color="#ffff00">are</font> delicious!" said Peter.
+
+66
+00:01:22,627 --> 00:01:24,045
+"These vegetables are <font color="#ffff00">delicious</font>!" said Peter.
+
+67
+00:01:24,046 --> 00:01:24,455
+"These vegetables are delicious!" <font color="#ffff00">said</font> Peter.
+
+68
+00:01:24,456 --> 00:01:25,051
+"These vegetables are delicious!" said <font color="#ffff00">Peter</font>.
+
+69
+00:01:25,052 --> 00:01:25,334
+"These vegetables are delicious!" said Peter.
+
+70
+00:01:25,335 --> 00:01:25,838
+"I'll eat some more."
+
+71
+00:01:25,839 --> 00:01:26,232
+"<font color="#ffff00">I'll</font> eat some more."
+
+72
+00:01:26,233 --> 00:01:26,502
+"I'll <font color="#ffff00">eat</font> some more."
+
+73
+00:01:26,503 --> 00:01:26,845
+"I'll eat <font color="#ffff00">some</font> more."
+
+74
+00:01:26,846 --> 00:01:27,376
+"I'll eat some <font color="#ffff00">more</font>."
+
+75
+00:01:27,377 --> 00:01:31,586
+"I'll eat some more."
+
+76
+00:01:31,587 --> 00:01:31,945
+Then he hopped around a corner.
+
+77
+00:01:31,946 --> 00:01:32,205
+<font color="#ffff00">Then</font> he hopped around a corner.
+
+78
+00:01:32,206 --> 00:01:32,443
+Then <font color="#ffff00">he</font> hopped around a corner.
+
+79
+00:01:32,444 --> 00:01:32,916
+Then he <font color="#ffff00">hopped</font> around a corner.
+
+80
+00:01:32,917 --> 00:01:33,333
+Then he hopped <font color="#ffff00">around</font> a corner.
+
+81
+00:01:33,334 --> 00:01:33,516
+Then he hopped around <font color="#ffff00">a</font> corner.
+
+82
+00:01:33,517 --> 00:01:34,139
+Then he hopped around a <font color="#ffff00">corner</font>.
+
+83
+00:01:34,140 --> 00:01:37,006
+Then he hopped around a corner.
+
+84
+00:01:37,007 --> 00:01:37,409
+Peter gasped. "The farmer!"
+
+85
+00:01:37,410 --> 00:01:37,857
+<font color="#ffff00">Peter</font> gasped. "The farmer!"
+
+86
+00:01:37,858 --> 00:01:38,579
+Peter <font color="#ffff00">gasped</font>. "The farmer!"
+
+87
+00:01:38,580 --> 00:01:39,549
+Peter gasped. "The farmer!"
+
+88
+00:01:39,550 --> 00:01:39,765
+Peter gasped. "<font color="#ffff00">The</font> farmer!"
+
+89
+00:01:39,766 --> 00:01:40,527
+Peter gasped. "The <font color="#ffff00">farmer</font>!"
+
+90
+00:01:40,528 --> 00:01:40,924
+Peter gasped. "The farmer!"
+
+91
+00:01:40,925 --> 00:01:41,229
+The farmer gasped. "A rabbit!"
+
+92
+00:01:41,230 --> 00:01:41,419
+<font color="#ffff00">The</font> farmer gasped. "A rabbit!"
+
+93
+00:01:41,420 --> 00:01:41,978
+The <font color="#ffff00">farmer</font> gasped. "A rabbit!"
+
+94
+00:01:41,979 --> 00:01:42,726
+The farmer <font color="#ffff00">gasped</font>. "A rabbit!"
+
+95
+00:01:42,727 --> 00:01:43,561
+The farmer gasped. "A rabbit!"
+
+96
+00:01:43,562 --> 00:01:43,777
+The farmer gasped. "<font color="#ffff00">A</font> rabbit!"
+
+97
+00:01:43,778 --> 00:01:44,458
+The farmer gasped. "A <font color="#ffff00">rabbit</font>!"
+
+98
+00:01:44,459 --> 00:01:45,544
+The farmer gasped. "A rabbit!"
+
+99
+00:01:45,545 --> 00:01:45,780
+Peter ran.
+
+100
+00:01:45,781 --> 00:01:46,214
+<font color="#ffff00">Peter</font> ran.
+
+101
+00:01:46,215 --> 00:01:46,996
+Peter <font color="#ffff00">ran</font>.
+
+102
+00:01:46,997 --> 00:01:47,533
+Peter ran.
+
+103
+00:01:47,534 --> 00:01:47,812
+The farmer grabbed his rake.
+
+104
+00:01:47,813 --> 00:01:47,971
+<font color="#ffff00">The</font> farmer grabbed his rake.
+
+105
+00:01:47,972 --> 00:01:48,461
+The <font color="#ffff00">farmer</font> grabbed his rake.
+
+106
+00:01:48,462 --> 00:01:48,789
+The farmer <font color="#ffff00">grabbed</font> his rake.
+
+107
+00:01:48,790 --> 00:01:49,038
+The farmer grabbed <font color="#ffff00">his</font> rake.
+
+108
+00:01:49,039 --> 00:01:49,576
+The farmer grabbed his <font color="#ffff00">rake</font>.
+
+109
+00:01:49,577 --> 00:01:51,268
+The farmer grabbed his rake.
+
+110
+00:01:51,269 --> 00:01:51,592
+He chased Peter.
+
+111
+00:01:51,593 --> 00:01:51,785
+<font color="#ffff00">He</font> chased Peter.
+
+112
+00:01:51,786 --> 00:01:52,274
+He <font color="#ffff00">chased</font> Peter.
+
+113
+00:01:52,275 --> 00:01:52,894
+He chased <font color="#ffff00">Peter</font>.
+
+114
+00:01:52,895 --> 00:01:55,815
+He chased Peter.
+
+115
+00:01:55,816 --> 00:01:56,196
+"Stop, thief!" cried the farmer.
+
+116
+00:01:56,197 --> 00:01:57,212
+"<font color="#ffff00">Stop</font>, thief!" cried the farmer.
+
+117
+00:01:57,213 --> 00:01:58,298
+"Stop, <font color="#ffff00">thief</font>!" cried the farmer.
+
+118
+00:01:58,299 --> 00:01:58,670
+"Stop, thief!" <font color="#ffff00">cried</font> the farmer.
+
+119
+00:01:58,671 --> 00:01:58,809
+"Stop, thief!" cried <font color="#ffff00">the</font> farmer.
+
+120
+00:01:58,810 --> 00:01:59,491
+"Stop, thief!" cried the <font color="#ffff00">farmer</font>.
+
+121
+00:01:59,492 --> 00:01:59,834
+"Stop, thief!" cried the farmer.
+
+122
+00:01:59,835 --> 00:02:00,072
+He swung his rake at Peter.
+
+123
+00:02:00,073 --> 00:02:00,236
+<font color="#ffff00">He</font> swung his rake at Peter.
+
+124
+00:02:00,237 --> 00:02:00,777
+He <font color="#ffff00">swung</font> his rake at Peter.
+
+125
+00:02:00,778 --> 00:02:00,989
+He swung <font color="#ffff00">his</font> rake at Peter.
+
+126
+00:02:00,990 --> 00:02:01,339
+He swung his <font color="#ffff00">rake</font> at Peter.
+
+127
+00:02:01,340 --> 00:02:01,563
+He swung his rake <font color="#ffff00">at</font> Peter.
+
+128
+00:02:01,564 --> 00:02:02,117
+He swung his rake at <font color="#ffff00">Peter</font>.
+
+129
+00:02:02,118 --> 00:02:02,620
+He swung his rake at Peter.
+
+130
+00:02:02,621 --> 00:02:03,179
+Peter ran as fast as he could.
+
+131
+00:02:03,180 --> 00:02:03,554
+<font color="#ffff00">Peter</font> ran as fast as he could.
+
+132
+00:02:03,555 --> 00:02:03,965
+Peter <font color="#ffff00">ran</font> as fast as he could.
+
+133
+00:02:03,966 --> 00:02:04,192
+Peter ran <font color="#ffff00">as</font> fast as he could.
+
+134
+00:02:04,193 --> 00:02:04,617
+Peter ran as <font color="#ffff00">fast</font> as he could.
+
+135
+00:02:04,618 --> 00:02:04,779
+Peter ran as fast <font color="#ffff00">as</font> he could.
+
+136
+00:02:04,780 --> 00:02:04,930
+Peter ran as fast as <font color="#ffff00">he</font> could.
+
+137
+00:02:04,931 --> 00:02:05,500
+Peter ran as fast as he <font color="#ffff00">could</font>.
+
+138
+00:02:05,501 --> 00:02:05,814
+Peter ran as fast as he could.
+
+139
+00:02:05,815 --> 00:02:06,078
+His heart beat fast.
+
+140
+00:02:06,079 --> 00:02:06,287
+<font color="#ffff00">His</font> heart beat fast.
+
+141
+00:02:06,288 --> 00:02:06,668
+His <font color="#ffff00">heart</font> beat fast.
+
+142
+00:02:06,669 --> 00:02:06,989
+His heart <font color="#ffff00">beat</font> fast.
+
+143
+00:02:06,990 --> 00:02:07,782
+His heart beat <font color="#ffff00">fast</font>.
+
+144
+00:02:07,783 --> 00:02:10,626
+His heart beat fast.
+
+145
+00:02:10,627 --> 00:02:11,153
+He lost one shoe near the cabbages.
+
+146
+00:02:11,154 --> 00:02:11,331
+<font color="#ffff00">He</font> lost one shoe near the cabbages.
+
+147
+00:02:11,332 --> 00:02:11,725
+He <font color="#ffff00">lost</font> one shoe near the cabbages.
+
+148
+00:02:11,726 --> 00:02:12,001
+He lost <font color="#ffff00">one</font> shoe near the cabbages.
+
+149
+00:02:12,002 --> 00:02:12,397
+He lost one <font color="#ffff00">shoe</font> near the cabbages.
+
+150
+00:02:12,398 --> 00:02:12,576
+He lost one shoe <font color="#ffff00">near</font> the cabbages.
+
+151
+00:02:12,577 --> 00:02:12,710
+He lost one shoe near <font color="#ffff00">the</font> cabbages.
+
+152
+00:02:12,711 --> 00:02:13,730
+He lost one shoe near the <font color="#ffff00">cabbages</font>.
+
+153
+00:02:13,731 --> 00:02:19,147
+He lost one shoe near the cabbages.
+
+154
+00:02:19,148 --> 00:02:19,335
+He lost his other shoe near the potatoes.
+
+155
+00:02:19,336 --> 00:02:19,503
+<font color="#ffff00">He</font> lost his other shoe near the potatoes.
+
+156
+00:02:19,504 --> 00:02:19,906
+He <font color="#ffff00">lost</font> his other shoe near the potatoes.
+
+157
+00:02:19,907 --> 00:02:20,090
+He lost <font color="#ffff00">his</font> other shoe near the potatoes.
+
+158
+00:02:20,091 --> 00:02:20,377
+He lost his <font color="#ffff00">other</font> shoe near the potatoes.
+
+159
+00:02:20,378 --> 00:02:20,719
+He lost his other <font color="#ffff00">shoe</font> near the potatoes.
+
+160
+00:02:20,720 --> 00:02:20,979
+He lost his other shoe <font color="#ffff00">near</font> the potatoes.
+
+161
+00:02:20,980 --> 00:02:21,137
+He lost his other shoe near <font color="#ffff00">the</font> potatoes.
+
+162
+00:02:21,138 --> 00:02:22,201
+He lost his other shoe near the <font color="#ffff00">potatoes</font>.
+
+163
+00:02:22,202 --> 00:02:25,007
+He lost his other shoe near the potatoes.
+
+164
+00:02:25,008 --> 00:02:25,397
+"Where's the gate?" cried Peter.
+
+165
+00:02:25,398 --> 00:02:25,953
+"<font color="#ffff00">Where's</font> the gate?" cried Peter.
+
+166
+00:02:25,954 --> 00:02:26,223
+"Where's <font color="#ffff00">the</font> gate?" cried Peter.
+
+167
+00:02:26,224 --> 00:02:26,963
+"Where's the <font color="#ffff00">gate</font>?" cried Peter.
+
+168
+00:02:26,964 --> 00:02:27,388
+"Where's the gate?" <font color="#ffff00">cried</font> Peter.
+
+169
+00:02:27,389 --> 00:02:28,002
+"Where's the gate?" cried <font color="#ffff00">Peter</font>.
+
+170
+00:02:28,003 --> 00:02:28,334
+"Where's the gate?" cried Peter.
+
+171
+00:02:28,335 --> 00:02:28,639
+He looked around.
+
+172
+00:02:28,640 --> 00:02:28,827
+<font color="#ffff00">He</font> looked around.
+
+173
+00:02:28,828 --> 00:02:29,217
+He <font color="#ffff00">looked</font> around.
+
+174
+00:02:29,218 --> 00:02:30,156
+He looked <font color="#ffff00">around</font>.
+
+175
+00:02:30,157 --> 00:02:32,731
+He looked around.
+
+176
+00:02:32,732 --> 00:02:32,960
+Suddenly he ran into a net.
+
+177
+00:02:32,961 --> 00:02:33,760
+<font color="#ffff00">Suddenly</font> he ran into a net.
+
+178
+00:02:33,761 --> 00:02:33,991
+Suddenly <font color="#ffff00">he</font> ran into a net.
+
+179
+00:02:33,992 --> 00:02:34,337
+Suddenly he <font color="#ffff00">ran</font> into a net.
+
+180
+00:02:34,338 --> 00:02:34,632
+Suddenly he ran <font color="#ffff00">into</font> a net.
+
+181
+00:02:34,633 --> 00:02:34,791
+Suddenly he ran into <font color="#ffff00">a</font> net.
+
+182
+00:02:34,792 --> 00:02:35,411
+Suddenly he ran into a <font color="#ffff00">net</font>.
+
+183
+00:02:35,412 --> 00:02:35,821
+Suddenly he ran into a net.
+
+184
+00:02:35,822 --> 00:02:36,132
+The big buttons on his jacket got caught.
+
+185
+00:02:36,133 --> 00:02:36,309
+<font color="#ffff00">The</font> big buttons on his jacket got caught.
+
+186
+00:02:36,310 --> 00:02:36,681
+The <font color="#ffff00">big</font> buttons on his jacket got caught.
+
+187
+00:02:36,682 --> 00:02:37,027
+The big <font color="#ffff00">buttons</font> on his jacket got caught.
+
+188
+00:02:37,028 --> 00:02:37,224
+The big buttons <font color="#ffff00">on</font> his jacket got caught.
+
+189
+00:02:37,225 --> 00:02:37,427
+The big buttons on <font color="#ffff00">his</font> jacket got caught.
+
+190
+00:02:37,428 --> 00:02:37,890
+The big buttons on his <font color="#ffff00">jacket</font> got caught.
+
+191
+00:02:37,891 --> 00:02:38,183
+The big buttons on his jacket <font color="#ffff00">got</font> caught.
+
+192
+00:02:38,184 --> 00:02:38,947
+The big buttons on his jacket got <font color="#ffff00">caught</font>.
+
+193
+00:02:38,948 --> 00:02:39,268
+The big buttons on his jacket got caught.
+
+194
+00:02:39,269 --> 00:02:39,703
+"Ahh!" cried Peter.
+
+195
+00:02:39,704 --> 00:02:40,862
+"<font color="#ffff00">Ahh</font>!" cried Peter.
+
+196
+00:02:40,863 --> 00:02:41,328
+"Ahh!" <font color="#ffff00">cried</font> Peter.
+
+197
+00:02:41,329 --> 00:02:41,957
+"Ahh!" cried <font color="#ffff00">Peter</font>.
+
+198
+00:02:41,958 --> 00:02:42,624
+"Ahh!" cried Peter.
+
+199
+00:02:42,625 --> 00:02:43,097
+He kicked and twisted.
+
+200
+00:02:43,098 --> 00:02:43,274
+<font color="#ffff00">He</font> kicked and twisted.
+
+201
+00:02:43,275 --> 00:02:43,707
+He <font color="#ffff00">kicked</font> and twisted.
+
+202
+00:02:43,708 --> 00:02:43,884
+He kicked <font color="#ffff00">and</font> twisted.
+
+203
+00:02:43,885 --> 00:02:44,622
+He kicked and <font color="#ffff00">twisted</font>.
+
+204
+00:02:44,623 --> 00:02:46,922
+He kicked and twisted.
+
+205
+00:02:46,923 --> 00:02:47,456
+But it was no help.
+
+206
+00:02:47,457 --> 00:02:47,624
+<font color="#ffff00">But</font> it was no help.
+
+207
+00:02:47,625 --> 00:02:47,773
+But <font color="#ffff00">it</font> was no help.
+
+208
+00:02:47,774 --> 00:02:47,954
+But it <font color="#ffff00">was</font> no help.
+
+209
+00:02:47,955 --> 00:02:48,370
+But it was <font color="#ffff00">no</font> help.
+
+210
+00:02:48,371 --> 00:02:48,943
+But it was no <font color="#ffff00">help</font>.
+
+211
+00:02:48,944 --> 00:02:49,557
+But it was no help.
+
+212
+00:02:49,558 --> 00:02:49,875
+"I'm stuck in the farmer's net!" cried Peter.
+
+213
+00:02:49,876 --> 00:02:50,188
+"<font color="#ffff00">I'm</font> stuck in the farmer's net!" cried Peter.
+
+214
+00:02:50,189 --> 00:02:51,093
+"I'm <font color="#ffff00">stuck</font> in the farmer's net!" cried Peter.
+
+215
+00:02:51,094 --> 00:02:51,300
+"I'm stuck <font color="#ffff00">in</font> the farmer's net!" cried Peter.
+
+216
+00:02:51,301 --> 00:02:51,468
+"I'm stuck in <font color="#ffff00">the</font> farmer's net!" cried Peter.
+
+217
+00:02:51,469 --> 00:02:52,135
+"I'm stuck in the <font color="#ffff00">farmer's</font> net!" cried Peter.
+
+218
+00:02:52,136 --> 00:02:53,233
+"I'm stuck in the farmer's <font color="#ffff00">net</font>!" cried Peter.
+
+219
+00:02:53,234 --> 00:02:53,627
+"I'm stuck in the farmer's net!" <font color="#ffff00">cried</font> Peter.
+
+220
+00:02:53,628 --> 00:02:54,236
+"I'm stuck in the farmer's net!" cried <font color="#ffff00">Peter</font>.
+
+221
+00:02:54,237 --> 00:02:58,466
+"I'm stuck in the farmer's net!" cried Peter.
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📖 彼得住 词汇卡片</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Comic Sans MS', cursive, sans-serif; background: #E8F5E9; min-height: 100vh; padding: 20px; }
+  .container { max-width: 600px; margin: 0 auto; }
+  h1 { text-align: center; color: #33691E; font-size: 1.5em; margin-bottom: 15px; }
+  .ep-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
+  .ep-tab { padding: 6px 18px; border: 2px solid #81C784; border-radius: 15px; background: white; color: #2E7D32; text-decoration: none; font-size: 0.85em; cursor: pointer; }
+  .ep-tab.active { background: #4CAF50; color: white; }
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .word-card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); cursor: pointer; transition: transform 0.15s; }
+  .word-card:active { transform: scale(0.97); }
+  .word-en { font-size: 1.1em; color: #2E7D32; font-weight: bold; margin-bottom: 3px; }
+  .word-cn { font-size: 0.8em; color: #888; }
+  .word-pos { font-size: 0.7em; color: #aaa; background: #f5f5f5; padding: 2px 5px; border-radius: 3px; display: inline-block; margin-bottom: 3px; }
+  .play-icon { font-size: 0.75em; color: #4CAF50; margin-left: 3px; }
+  .back { display: block; text-align: center; margin-top: 18px; color: #4CAF50; text-decoration: none; font-size: 1em; }
+  .section-title { color: #689F38; font-size: 0.85em; margin: 12px 0 6px; padding-left: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📖 彼得住 词汇卡片</h1>
+  <div class="ep-tabs">
+    <span class="ep-tab active" id="tab-all" onclick="showAll()">全部</span>
+    <span class="ep-tab" id="tab-s1e1" onclick="showS1E1()">S1E1</span>
+    <span class="ep-tab" id="tab-s1e2" onclick="showS1E2()">S1E2</span>
+  </div>
+  <div id="cards"></div>
+  <a href="index.html" class="back">🏠 返回首页</a>
+</div>
+
+<script>
+const vocabAll = [
+  // S1E1
+  { ep: "s1e1", en: "Mrs. Rabbit", cn: "兔妈妈", pos: "n.", example: "Mrs. Rabbit had four little bunnies." },
+  { ep: "s1e1", en: "bunny / bunnies", cn: "小兔子", pos: "n.", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", en: "Mopsy", cn: "莫普西（兔子名）", pos: "n.", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", en: "Flopsy", cn: "弗洛西（兔子名）", pos: "n.", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", en: "Cotton-tail", cn: "科顿 tail（兔子名）", pos: "n.", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", en: "hole", cn: "洞穴", pos: "n.", example: "They lived in a hole under a tree." },
+  { ep: "s1e1", en: "bread", cn: "面包", pos: "n.", example: "We need bread." },
+  { ep: "s1e1", en: "town", cn: "镇上", pos: "n.", example: "Mrs. Rabbit headed off to town." },
+  { ep: "s1e1", en: "outside", cn: "在外面", pos: "adv.", example: "Can we go outside?" },
+  { ep: "s1e1", en: "farmer's garden", cn: "农夫的花园", pos: "n.", example: "Don't go into the farmer's garden." },
+  { ep: "s1e1", en: "basket", cn: "篮子", pos: "n.", example: "She grabbed her basket and an umbrella." },
+  { ep: "s1e1", en: "umbrella", cn: "雨伞", pos: "n.", example: "She grabbed her basket and an umbrella." },
+  { ep: "s1e1", en: "blackberries", cn: "黑莓", pos: "n.", example: "Peter's sisters started to pick blackberries." },
+  { ep: "s1e1", en: "bush", cn: "灌木丛", pos: "n.", example: "I see a blackberry bush!" },
+  { ep: "s1e1", en: "path", cn: "小路", pos: "n.", example: "The four bunnies hopped down the path." },
+  { ep: "s1e1", en: "jacket", cn: "外套", pos: "n.", example: "The bunnies put on their jackets and shoes." },
+  { ep: "s1e1", en: "shoe / shoes", cn: "鞋子", pos: "n.", example: "The bunnies put on their jackets and shoes." },
+  { ep: "s1e1", en: "mother", cn: "妈妈", pos: "n.", example: "Yes, said his mother." },
+  // S1E2
+  { ep: "s1e2", en: "Peter", cn: "彼得住（兔子名）", pos: "n.", example: "Peter hopped through the woods." },
+  { ep: "s1e2", en: "farmer", cn: "农夫", pos: "n.", example: "The farmer grabbed his rake." },
+  { ep: "s1e2", en: "gate", cn: "大门", pos: "n.", example: "A path led to the farmer's gate." },
+  { ep: "s1e2", en: "ate", cn: "吃（eat过去式）", pos: "v.", example: "He ate some lettuce." },
+  { ep: "s1e2", en: "lost", cn: "丢失（lose过去式）", pos: "v.", example: "He lost one shoe near the cabbages." },
+  { ep: "s1e2", en: "net", cn: "网", pos: "n.", example: "Suddenly he ran into a net." },
+  { ep: "s1e2", en: "garden", cn: "花园/菜园", pos: "n.", example: "Peter wandered through the garden." },
+  { ep: "s1e2", en: "vegetables", cn: "蔬菜", pos: "n.", example: "These vegetables are delicious!" },
+  { ep: "s1e2", en: "lettuce", cn: "生菜", pos: "n.", example: "He ate some lettuce." },
+  { ep: "s1e2", en: "radishes", cn: "小萝卜", pos: "n.", example: "He ate some radishes." },
+  { ep: "s1e2", en: "beans", cn: "豆子", pos: "n.", example: "He ate some green beans." },
+  { ep: "s1e2", en: "potatoes", cn: "土豆", pos: "n.", example: "He lost his other shoe near the potatoes." },
+  { ep: "s1e2", en: "cabbages", cn: "卷心菜", pos: "n.", example: "He lost one shoe near the cabbages." },
+  { ep: "s1e2", en: "rake", cn: "耙子", pos: "n.", example: "He swung his rake at Peter." },
+  { ep: "s1e2", en: "stuck", cn: "卡住的", pos: "adj.", example: "I'm stuck in the farmer's net!" },
+  { ep: "s1e2", en: "delicious", cn: "美味的", pos: "adj.", example: "These vegetables are delicious!" },
+  { ep: "s1e2", en: "chased", cn: "追逐", pos: "v.", example: "He chased Peter." },
+  { ep: "s1e2", en: "fast", cn: "快速地", pos: "adv.", example: "Peter ran as fast as he could." },
+  { ep: "s1e2", en: "thief", cn: "贼", pos: "n.", example: "Stop, thief!" },
+];
+
+let utter = null;
+function speak(word) {
+  if (utter) window.speechSynthesis.cancel();
+  utter = new SpeechSynthesisUtterance(word);
+  utter.lang = 'en-US';
+  utter.rate = 0.8;
+  window.speechSynthesis.speak(utter);
+}
+
+function renderVocab(filter) {
+  const container = document.getElementById('cards');
+  container.innerHTML = '';
+  const filtered = filter === 'all' ? vocabAll : vocabAll.filter(v => v.ep === filter);
+  filtered.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'word-card';
+    card.innerHTML = `
+      <div class="word-pos">${w.pos}</div>
+      <div class="word-en" onclick="speak('${w.en.replace(/'/g, "\\'")}')">${w.en} <span class="play-icon">🔊</span></div>
+      <div class="word-cn">${w.cn}</div>
+    `;
+    card.onclick = () => speak(w.en);
+    container.appendChild(card);
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-all').classList.add('active');
+  renderVocab('all');
+}
+function showS1E1() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-s1e1').classList.add('active');
+  renderVocab('s1e1');
+}
+function showS1E2() {
+  document.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-s1e2').classList.add('active');
+  renderVocab('s1e2');
+}
+
+renderVocab('all');
+</script>
+</body>
+</html>
