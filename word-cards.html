@@ -2,190 +2,279 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📚 彼得住 单词卡片</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>📚 彼得住 单词卡</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Comic Sans MS', cursive, sans-serif; background: linear-gradient(135deg, #FFF8E1, #E8F5E9); min-height: 100vh; padding: 15px; }
-  .container { max-width: 600px; margin: 0 auto; }
-  h1 { text-align: center; color: #33691E; font-size: 1.5em; margin-bottom: 12px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { 
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    background: #F0F8E8; 
+    min-height: 100vh; 
+    overflow: hidden;
+    touch-action: manipulation;
+  }
+  .container { 
+    max-width: 500px; 
+    margin: 0 auto; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+  }
 
-  .episodes { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; }
-  .ep-btn { padding: 6px 16px; border: 2px solid #A5D6A7; border-radius: 15px; background: white; color: #33691E; text-decoration: none; font-size: 0.85em; cursor: pointer; }
-  .ep-btn.active { background: #A5D6A7; color: white; }
+  /* 顶部导航 */
+  .top-bar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 12px 15px 8px;
+    flex-shrink: 0;
+  }
+  .top-bar h1 { font-size: 1.2em; color: #33691E; }
+  .page-num { font-size: 0.9em; color: #aaa; }
 
-  .card { background: white; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); margin-bottom: 15px; overflow: hidden; }
-  .card-header { display: flex; align-items: center; padding: 18px 20px 0; gap: 15px; }
-  .emoji { font-size: 3.5em; line-height: 1; flex-shrink: 0; }
-  .word-info { flex: 1; }
-  .word-en { font-size: 1.9em; color: #2E7D32; font-weight: bold; margin-bottom: 2px; cursor: pointer; }
-  .word-en:active { color: #1B5E20; }
-  .word-phonetic { font-size: 0.85em; color: #aaa; margin-bottom: 4px; }
-  .word-cn { font-size: 1.1em; color: #888; }
-  .word-pos { display: inline-block; font-size: 0.7em; background: #E8F5E9; color: #33691E; padding: 2px 8px; border-radius: 10px; margin-bottom: 4px; }
+  /* 集数选择 */
+  .tabs { display: flex; gap: 8px; padding: 0 15px 10px; flex-shrink: 0; }
+  .tab { 
+    padding: 5px 14px; 
+    border: 2px solid #A5D6A7; 
+    border-radius: 12px; 
+    background: white; 
+    color: #33691E; 
+    font-size: 0.8em; 
+    cursor: pointer;
+  }
+  .tab.active { background: #4CAF50; color: white; border-color: #4CAF50; }
 
-  .card-footer { padding: 10px 20px 15px; }
-  .example { font-size: 0.9em; color: #999; font-style: italic; line-height: 1.5; }
-  .play-btn { display: inline-block; margin-top: 8px; background: #A5D6A7; color: #1B5E20; border: none; padding: 6px 16px; border-radius: 15px; font-size: 0.85em; cursor: pointer; }
-  .play-btn:active { transform: scale(0.97); }
+  /* 卡片主区域 */
+  .card-area { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
 
-  .card-nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5px 15px; }
-  .nav-btn { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 0.9em; cursor: pointer; }
-  .nav-btn:active { transform: scale(0.97); }
-  .nav-info { color: #888; font-size: 0.85em; }
+  .big-emoji { font-size: 8em; line-height: 1; margin-bottom: 15px; }
+  
+  .big-word { 
+    font-size: 2.8em; 
+    color: #2E7D32; 
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 8px;
+  }
 
-  .progress-bar { height: 6px; background: #e0e0e0; border-radius: 3px; margin: 0 20px 15px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, #A5D6A7, #4CAF50); border-radius: 3px; transition: width 0.3s; }
+  .big-cn { 
+    font-size: 1.6em; 
+    color: #888; 
+    text-align: center; 
+    margin-bottom: 15px;
+  }
 
-  .back { display: block; text-align: center; margin-top: 10px; color: #4CAF50; text-decoration: none; font-size: 1em; }
+  .play-icon { 
+    font-size: 1.2em; 
+    color: #4CAF50; 
+    opacity: 0.7;
+  }
 
-  .star { color: #FFD700; font-size: 1.5em; margin-left: 10px; cursor: pointer; display: inline-block; transition: transform 0.15s; }
-  .star:active { transform: scale(1.3); }
-  .star.collected { color: #FFA000; }
+  /* 进度条 */
+  .progress-wrap { padding: 8px 20px; flex-shrink: 0; }
+  .progress-bar { height: 6px; background: #ddd; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #4CAF50; border-radius: 3px; transition: width 0.3s; }
+
+  /* 底部导航按钮 */
+  .bottom-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px 20px 20px; 
+    flex-shrink: 0;
+    gap: 15px;
+  }
+  .nav-btn { 
+    flex: 1; 
+    background: #4CAF50; 
+    color: white; 
+    border: none; 
+    padding: 14px; 
+    border-radius: 16px; 
+    font-size: 1.1em; 
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .nav-btn:active { background: #388E3C; transform: scale(0.97); }
+  .nav-btn:disabled { background: #ccc; cursor: default; }
+
+  /* 例句 */
+  .example { 
+    font-size: 0.85em; 
+    color: #aaa; 
+    text-align: center; 
+    padding: 0 20px 5px;
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .back { 
+    display: block; 
+    text-align: center; 
+    padding: 8px; 
+    color: #4CAF50; 
+    text-decoration: none; 
+    font-size: 0.9em;
+    flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>📚 彼得住 单词卡片</h1>
+<div class="container" id="app">
 
-  <div class="episodes">
-    <span class="ep-btn active" id="tab-all" onclick="showAll()">全部</span>
-    <span class="ep-btn" id="tab-s1e1" onclick="showS1E1()">S1E1</span>
-    <span class="ep-btn" id="tab-s1e2" onclick="showS1E2()">S1E2</span>
+  <div class="top-bar">
+    <h1>📚 彼得住 单词卡</h1>
+    <div class="page-num" id="pageNum">1/39</div>
   </div>
 
-  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="tabs">
+    <span class="tab active" id="tab-all" onclick="showAll()">全部</span>
+    <span class="tab" id="tab-s1e1" onclick="showS1E1()">🐰 S1E1</span>
+    <span class="tab" id="tab-s1e2" onclick="showS1E2()">🌿 S1E2</span>
+  </div>
 
-  <div id="cards"></div>
+  <!-- 点击卡片区域发声 -->
+  <div class="card-area" id="cardArea" onclick="speakCurrent()">
+    <div class="big-emoji" id="bigEmoji">🐰</div>
+    <div class="big-word" id="bigWord">Rabbit</div>
+    <div class="big-cn" id="bigCn">兔子</div>
+    <div class="play-icon">🔊 点击卡片听发音</div>
+  </div>
 
-  <div class="card-nav">
-    <button class="nav-btn" id="prevBtn" onclick="prevCard()">⬅ 上一张</button>
-    <div class="nav-info" id="navInfo">1 / 39</div>
-    <button class="nav-btn" id="nextBtn" onclick="nextCard()">下一张 ➡</button>
+  <div class="example" id="example">"Mrs. Rabbit had four little bunnies."</div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:2.6%"></div></div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-btn" id="prevBtn" onclick="prev()">⬅ 上一张</button>
+    <button class="nav-btn" id="nextBtn" onclick="next()">下一张 ➡</button>
   </div>
 
   <a href="index.html" class="back">🏠 返回首页</a>
 </div>
 
 <script>
-// ============ 单词数据（emoji配图 + 音标 + 中文）============
-// 每个单词配最常见的简单emoji，同时收录两季词汇
+// ============ 单词数据（超大emoji配图，适合4岁幼儿）============
 const wordData = [
-  // ===== S1E1 =====
-  { ep: "s1e1", en: "Rabbit", cn: "兔子", emoji: "🐰", phonetic: "/ˈræbɪt/", example: "Mrs. Rabbit had four little bunnies.", pos: "n." },
-  { ep: "s1e1", en: "bunny", cn: "小兔子", emoji: "🐰", phonetic: "/ˈbʌni/", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter.", pos: "n." },
-  { ep: "s1e1", en: "Mopsy", cn: "莫普西（兔子名）", emoji: "🐰", phonetic: "/ˈmɒpsi/", example: "Mopsy is Peter's sister.", pos: "n." },
-  { ep: "s1e1", en: "Flopsy", cn: "弗洛西（兔子名）", emoji: "🐰", phonetic: "/ˈflɒpsi/", example: "Flopsy is Peter's sister.", pos: "n." },
-  { ep: "s1e1", en: "Cotton-tail", cn: "科顿 tail（兔子名）", emoji: "🐰", phonetic: "/ˈkɒtn teɪl/", example: "Cotton-tail is the youngest bunny.", pos: "n." },
-  { ep: "s1e1", en: "Peter", cn: "彼得住（兔子名）", emoji: "🐰", phonetic: "/ˈpiːtə/", example: "Peter is the main character.", pos: "n." },
-  { ep: "s1e1", en: "hole", cn: "地洞", emoji: "🕳️", phonetic: "/həʊl/", example: "They lived in a hole under a tree.", pos: "n." },
-  { ep: "s1e1", en: "tree", cn: "树", emoji: "🌳", phonetic: "/triː/", example: "They lived in a hole under a tree.", pos: "n." },
-  { ep: "s1e1", en: "bread", cn: "面包", emoji: "🍞", phonetic: "/bred/", example: "We need bread.", pos: "n." },
-  { ep: "s1e1", en: "town", cn: "镇上", emoji: "🏘️", phonetic: "/taʊn/", example: "Mrs. Rabbit headed off to town.", pos: "n." },
-  { ep: "s1e1", en: "outside", cn: "在外面", emoji: "🚪", phonetic: "/ˌaʊtˈsaɪd/", example: "Can we go outside?", pos: "adv." },
-  { ep: "s1e1", en: "basket", cn: "篮子", emoji: "🧺", phonetic: "/ˈbɑːskɪt/", example: "She grabbed her basket and an umbrella.", pos: "n." },
-  { ep: "s1e1", en: "umbrella", cn: "雨伞", emoji: "☂️", phonetic: "/ʌmˈbrelə/", example: "She grabbed her basket and an umbrella.", pos: "n." },
-  { ep: "s1e1", en: "blackberries", cn: "黑莓", emoji: "🫐", phonetic: "/ˈblækbəriz/", example: "Peter's sisters started to pick blackberries.", pos: "n." },
-  { ep: "s1e1", en: "bush", cn: "灌木丛", emoji: "🌿", phonetic: "/bʊʃ/", example: "I see a blackberry bush!", pos: "n." },
-  { ep: "s1e1", en: "path", cn: "小路", emoji: "🛤️", phonetic: "/pɑːθ/", example: "The four bunnies hopped down the path.", pos: "n." },
-  { ep: "s1e1", en: "jacket", cn: "外套", emoji: "🧥", phonetic: "/ˈdʒækɪt/", example: "The bunnies put on their jackets and shoes.", pos: "n." },
-  { ep: "s1e1", en: "shoes", cn: "鞋子", emoji: "👟", phonetic: "/ʃuːz/", example: "The bunnies put on their jackets and shoes.", pos: "n." },
-  { ep: "s1e1", en: "mother", cn: "妈妈", emoji: "👩", phonetic: "/ˈmʌðə/", example: "Yes, said his mother.", pos: "n." },
-  { ep: "s1e1", en: "garden", cn: "花园", emoji: "🌻", phonetic: "/ˈɡɑːdn/", example: "Don't go into the farmer's garden.", pos: "n." },
-  // ===== S1E2 =====
-  { ep: "s1e2", en: "farmer", cn: "农夫", emoji: "👨‍🌾", phonetic: "/ˈfɑːmə/", example: "The farmer grabbed his rake.", pos: "n." },
-  { ep: "s1e2", en: "gate", cn: "大门", emoji: "🚧", phonetic: "/ɡeɪt/", example: "A path led to the farmer's gate.", pos: "n." },
-  { ep: "s1e2", en: "woods", cn: "树林", emoji: "🌲", phonetic: "/wʊdz/", example: "Peter hopped through the woods.", pos: "n." },
-  { ep: "s1e2", en: "net", cn: "网", emoji: "🕸️", phonetic: "/net/", example: "Suddenly he ran into a net.", pos: "n." },
-  { ep: "s1e2", en: "vegetables", cn: "蔬菜", emoji: "🥬", phonetic: "/ˈvedʒtəblz/", example: "These vegetables are delicious!", pos: "n." },
-  { ep: "s1e2", en: "lettuce", cn: "生菜", emoji: "🥬", phonetic: "/ˈletɪs/", example: "He ate some lettuce.", pos: "n." },
-  { ep: "s1e2", en: "beans", cn: "豆子", emoji: "🫘", phonetic: "/biːnz/", example: "He ate some green beans.", pos: "n." },
-  { ep: "s1e2", en: "radishes", cn: "小萝卜", emoji: "🔴", phonetic: "/ˈrædɪʃɪz/", example: "He ate some radishes.", pos: "n." },
-  { ep: "s1e2", en: "potatoes", cn: "土豆", emoji: "🥔", phonetic: "/pəˈteɪtəʊz/", example: "He lost his other shoe near the potatoes.", pos: "n." },
-  { ep: "s1e2", en: "cabbages", cn: "卷心菜", emoji: "🥬", phonetic: "/ˈkæbɪdʒɪz/", example: "He lost one shoe near the cabbages.", pos: "n." },
-  { ep: "s1e2", en: "rake", cn: "耙子", emoji: "🔨", phonetic: "/reɪk/", example: "He swung his rake at Peter.", pos: "n." },
-  { ep: "s1e2", en: "thief", cn: "贼", emoji: "🦹", phonetic: "/θiːf/", example: "Stop, thief!", pos: "n." },
-  { ep: "s1e2", en: "stuck", cn: "卡住的", emoji: "😣", phonetic: "/stʌk/", example: "I'm stuck in the farmer's net!", pos: "adj." },
-  { ep: "s1e2", en: "leaves", cn: "树叶", emoji: "🍃", phonetic: "/liːvz/", example: "I see green leaves everywhere!", pos: "n." },
-  { ep: "s1e2", en: "delicious", cn: "美味的", emoji: "😋", phonetic: "/dɪˈlɪʃəs/", example: "These vegetables are delicious!", pos: "adj." },
-  { ep: "s1e2", en: "buttons", cn: "纽扣", emoji: "🔘", phonetic: "/ˈbʌtnz/", example: "The big buttons on his jacket got caught.", pos: "n." },
-  { ep: "s1e2", en: "corner", cn: "角落", emoji: "📐", phonetic: "/ˈkɔːnə/", example: "Then he hopped around a corner.", pos: "n." },
-  { ep: "s1e2", en: "heart", cn: "心脏", emoji: "❤️", phonetic: "/hɑːt/", example: "His heart beat fast.", pos: "n." },
-  { ep: "s1e2", en: "fast", cn: "快地", emoji: "⚡", phonetic: "/fɑːst/", example: "Peter ran as fast as he could.", pos: "adv." },
+  // ===== S1E1 兔妈妈去镇上 =====
+  { ep: "s1e1", en: "Rabbit",    cn: "兔子",     emoji: "🐰", example: "Mrs. Rabbit had four little bunnies." },
+  { ep: "s1e1", en: "bunny",     cn: "小兔子",   emoji: "🐰", example: "Their names were Mopsy, Flopsy, Cotton-tail, and Peter." },
+  { ep: "s1e1", en: "Mopsy",     cn: "莫普西",   emoji: "🐰", example: "Mopsy is Peter's sister." },
+  { ep: "s1e1", en: "Flopsy",    cn: "弗洛西",   emoji: "🐰", example: "Flopsy is Peter's sister." },
+  { ep: "s1e1", en: "Cotton-tail", cn: "科顿",   emoji: "🐰", example: "Cotton-tail is the youngest." },
+  { ep: "s1e1", en: "Peter",     cn: "彼得住",   emoji: "🐰", example: "Peter is the main character." },
+  { ep: "s1e1", en: "tree",      cn: "树",       emoji: "🌳", example: "They lived in a hole under a tree." },
+  { ep: "s1e1", en: "hole",      cn: "地洞",     emoji: "🕳️", example: "They lived in a hole under a tree." },
+  { ep: "s1e1", en: "bread",     cn: "面包",     emoji: "🍞", example: "We need bread." },
+  { ep: "s1e1", en: "town",      cn: "镇上",     emoji: "🏘️", example: "Mrs. Rabbit headed off to town." },
+  { ep: "s1e1", en: "outside",   cn: "外面",     emoji: "🚪", example: "Can we go outside?" },
+  { ep: "s1e1", en: "basket",    cn: "篮子",     emoji: "🧺", example: "She grabbed her basket and an umbrella." },
+  { ep: "s1e1", en: "umbrella",  cn: "雨伞",     emoji: "☂️", example: "She grabbed her basket and an umbrella." },
+  { ep: "s1e1", en: "berry",     cn: "浆果",     emoji: "🫐", example: "Peter's sisters started to pick blackberries." },
+  { ep: "s1e1", en: "bush",      cn: "灌木丛",   emoji: "🌿", example: "I see a blackberry bush!" },
+  { ep: "s1e1", en: "path",      cn: "小路",     emoji: "🛤️", example: "The four bunnies hopped down the path." },
+  { ep: "s1e1", en: "jacket",    cn: "外套",     emoji: "🧥", example: "The bunnies put on their jackets and shoes." },
+  { ep: "s1e1", en: "shoes",     cn: "鞋子",     emoji: "👟", example: "The bunnies put on their jackets and shoes." },
+  { ep: "s1e1", en: "mother",    cn: "妈妈",     emoji: "👩", example: "Yes, said his mother." },
+  { ep: "s1e1", en: "garden",    cn: "花园",     emoji: "🌻", example: "Don't go into the farmer's garden." },
+  // ===== S1E2 走进花园 =====
+  { ep: "s1e2", en: "farmer",    cn: "农夫",     emoji: "👨‍🌾", example: "The farmer grabbed his rake." },
+  { ep: "s1e2", en: "gate",      cn: "大门",     emoji: "🚧", example: "A path led to the farmer's gate." },
+  { ep: "s1e2", en: "woods",     cn: "树林",     emoji: "🌲", example: "Peter hopped through the woods." },
+  { ep: "s1e2", en: "net",       cn: "网",       emoji: "🕸️", example: "Suddenly he ran into a net." },
+  { ep: "s1e2", en: "vegetable", cn: "蔬菜",     emoji: "🥬", example: "These vegetables are delicious!" },
+  { ep: "s1e2", en: "lettuce",   cn: "生菜",     emoji: "🥬", example: "He ate some lettuce." },
+  { ep: "s1e2", en: "beans",     cn: "豆子",     emoji: "🫘", example: "He ate some green beans." },
+  { ep: "s1e2", en: "radish",    cn: "小萝卜",   emoji: "🔴", example: "He ate some radishes." },
+  { ep: "s1e2", en: "potato",    cn: "土豆",     emoji: "🥔", example: "He lost his other shoe near the potatoes." },
+  { ep: "s1e2", en: "cabbage",   cn: "卷心菜",   emoji: "🥬", example: "He lost one shoe near the cabbages." },
+  { ep: "s1e2", en: "rake",      cn: "耙子",     emoji: "🔨", example: "He swung his rake at Peter." },
+  { ep: "s1e2", en: "thief",     cn: "贼",       emoji: "🦹", example: "Stop, thief!" },
+  { ep: "s1e2", en: "leaf",      cn: "树叶",     emoji: "🍃", example: "I see green leaves everywhere!" },
+  { ep: "s1e2", en: "button",    cn: "纽扣",     emoji: "🔘", example: "The big buttons on his jacket got caught." },
+  { ep: "s1e2", en: "corner",    cn: "角落",     emoji: "📐", example: "Then he hopped around a corner." },
+  { ep: "s1e2", en: "heart",     cn: "心脏",     emoji: "❤️", example: "His heart beat fast." },
+  { ep: "s1e2", en: "home",      cn: "家",       emoji: "🏠", example: "And he never came home." },
 ];
 
 let utter = null;
-function speak(word) {
-  if (utter) window.speechSynthesis.cancel();
-  utter = new SpeechSynthesisUtterance(word);
-  utter.lang = 'en-US';
-  utter.rate = 0.75;
-  window.speechSynthesis.speak(utter);
-}
-
-let currentFilter = 'all';
 let currentIndex = 0;
-let filteredData = wordData;
+let filtered = wordData;
 
-function renderCard() {
-  const card = filteredData[currentIndex];
-  document.getElementById('progressFill').style.width = `${((currentIndex + 1) / filteredData.length) * 100}%`;
-  document.getElementById('navInfo').textContent = `${currentIndex + 1} / ${filteredData.length}`;
-
-  const cardsDiv = document.getElementById('cards');
-  cardsDiv.innerHTML = `
-    <div class="card">
-      <div class="card-header">
-        <div class="emoji">${card.emoji}</div>
-        <div class="word-info">
-          <div class="word-pos">${card.pos}</div>
-          <div class="word-en" onclick="speak('${card.en.replace(/'/g, "\\'")}')">${card.en} 🔊</div>
-          <div class="word-phonetic">${card.phonetic}</div>
-          <div class="word-cn">${card.cn}</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="example">"${card.example}"</div>
-        <button class="play-btn" onclick="speak('${card.en.replace(/'/g, "\\'")}')">🔊 听发音</button>
-      </div>
-    </div>
-  `;
-
-  // 自动朗读
-  setTimeout(() => speak(card.en), 400);
+function speak(text) {
+  try {
+    if (utter) window.speechSynthesis.cancel();
+    utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-US';
+    utter.rate = 0.7;
+    window.speechSynthesis.speak(utter);
+  } catch(e) {}
 }
 
-function showFilter(filter) {
-  currentFilter = filter;
-  filteredData = filter === 'all' ? wordData : wordData.filter(w => w.ep === filter);
+function speakCurrent() {
+  speak(filtered[currentIndex].en);
+}
+
+function render() {
+  const w = filtered[currentIndex];
+  document.getElementById('bigEmoji').textContent = w.emoji;
+  document.getElementById('bigWord').textContent = w.en;
+  document.getElementById('bigCn').textContent = w.cn;
+  document.getElementById('example').textContent = '"' + w.example + '"';
+  document.getElementById('pageNum').textContent = `${currentIndex + 1}/${filtered.length}`;
+  document.getElementById('progressFill').style.width = `${((currentIndex + 1) / filtered.length) * 100}%`;
+  document.getElementById('prevBtn').disabled = currentIndex === 0;
+  document.getElementById('nextBtn').disabled = currentIndex === filtered.length - 1;
+  // 自动发声
+  setTimeout(speakCurrent, 300);
+}
+
+function showFilter(f) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + f).classList.add('active');
+  filtered = f === 'all' ? wordData : wordData.filter(w => w.ep === f);
   currentIndex = 0;
-  document.querySelectorAll('.ep-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + filter).classList.add('active');
-  renderCard();
+  render();
 }
 
 function showAll() { showFilter('all'); }
 function showS1E1() { showFilter('s1e1'); }
 function showS1E2() { showFilter('s1e2'); }
 
-function prevCard() {
-  currentIndex = (currentIndex - 1 + filteredData.length) % filteredData.length;
-  renderCard();
+function prev() {
+  if (currentIndex > 0) { currentIndex--; render(); }
+}
+function next() {
+  if (currentIndex < filtered.length - 1) { currentIndex++; render(); }
 }
 
-function nextCard() {
-  currentIndex = (currentIndex + 1) % filteredData.length;
-  renderCard();
-}
-
-// 键盘支持
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') prevCard();
-  if (e.key === 'ArrowRight') nextCard();
-  if (e.key === ' ') { e.preventDefault(); speak(filteredData[currentIndex].en); }
+// 键盘/手势支持
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+  if (e.key === ' ') { e.preventDefault(); speakCurrent(); }
 });
 
-renderCard();
+// 触摸滑动支持
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 60) { dx < 0 ? next() : prev(); }
+}, { passive: true });
+
+render();
 </script>
 </body>
 </html>
